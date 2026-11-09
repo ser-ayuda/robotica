@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esquema de Conexiones</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f4f6f9; color: #333; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 20px; }
+    img { width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+    th { background: #0056b3; color: white; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .btn-back { display: inline-block; padding: 8px 16px; background: #6c757d; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 15px; }
+    .alert { background: #fff3cd; border-left: 5px solid #ffc107; padding: 12px; margin: 15px 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="btn-back">Volver al Inicio</a>
+  <div class="card">
+    <h1>Esquema Visual: De la Simulacion a la Realidad</h1>
+    <div class="grid">
+      <div>
+        <h3>1. Simulacion en Tinkercad</h3>
+        <img src="Arduino_Sensor_Distancia_Tinkercad_Diagrama_2.jpg" alt="Circuito Tinkercad">
+      </div>
+      <div>
+        <h3>2. Montaje Fisico Real</h3>
+        <img src="Arduino_Real_sensor_distancia_1.jpeg" alt="Montaje real">
+      </div>
+    </div>
+    <div class="alert">
+      <strong>Nota para el aula:</strong> En la foto real se usan dos mini-protoboards. A nivel electrico es identico a una sola protoboard. Los pines en Arduino Uno son exactamente los mismos.
+    </div>
+    <h2>Tabla de Conexiones</h2>
+    <table>
+      <thead>
+        <tr><th>Cable</th><th>Componente</th><th>Pin Arduino</th><th>Funcion</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Morado</td><td>HC-SR04 (Trig)</td><td>Pin 13</td><td>Disparador de ultrasonido</td></tr>
+        <tr><td>Azul</td><td>HC-SR04 (Echo)</td><td>Pin 12</td><td>Receptor del eco</td></tr>
+        <tr><td>Amarillo</td><td>LED Rojo (+)</td><td>Pin 5</td><td>Alerta visual (resistor 220 Ohm a GND)</td></tr>
+        <tr><td>Rojo</td><td>Zumbador (+)</td><td>Pin 7</td><td>Alerta sonora (Do5 = 523 Hz)</td></tr>
+        <tr><td>Rojo</td><td>VCC</td><td>5V</td><td>Alimentacion positiva</td></tr>
+        <tr><td>Negro</td><td>GND</td><td>GND</td><td>Masa / Tierra</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

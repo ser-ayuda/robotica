@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codigo Arduino Murcielago</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 850px; margin: 0 auto; padding: 20px; background: #f4f6f9; color: #333; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    pre { background: #282c34; color: #abb2bf; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 0.95rem; }
+    .btn-back { display: inline-block; padding: 8px 16px; background: #6c757d; color: white; text-decoration: none; border-radius: 5px; margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="btn-back">Volver al Inicio</a>
+  <div class="card">
+    <h1>Codigo Arduino C++ (arduino_led_buzz_murcielago.txt)</h1>
+    <pre><code>/*
+  Sensor Ultrasonico HC-SR04 con Arduino
+  Extras a anadir: LiquidCrystal, TFT, Motores...
+*/
+int distancia = 0;
+int max_distancia = 0;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
+  pinMode(triggerPin, OUTPUT);
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  return pulseIn(echoPin, HIGH);
+}
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(5, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(7, OUTPUT);
+  max_distancia = 300;
+  distancia = 0;
+}
+
+void loop()
+{
+  distancia = 0.01723 * readUltrasonicDistance(13, 12);
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.print(" cm   y con ");
+  Serial.print(max_distancia);
+  Serial.println("cm de distancia maxima");
+
+  if (distancia > max_distancia) {
+    digitalWrite(5, LOW);
+    digitalWrite(7, LOW);
+  }
+  if (distancia <= 15 && distancia <= max_distancia) {
+    digitalWrite(5, HIGH);
+    tone(7, 523, 1000);
+  }
+  if (distancia > 15) {
+    digitalWrite(5, LOW);
+    digitalWrite(7, LOW);
+  }
+  delay(2);
+}</code></pre>
+  </div>
+</body>
+</html>
